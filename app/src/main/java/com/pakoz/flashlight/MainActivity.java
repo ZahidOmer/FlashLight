@@ -1,12 +1,15 @@
 package com.pakoz.flashlight;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.preference.DialogPreference;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.hardware.Camera.Parameters;
@@ -31,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        int PERMISSION_ALL = 1;
+        String[] PERMISSIONS = { Manifest.permission.CAMERA };
+        ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
 
         flashlightswitching = (ImageButton) findViewById(R.id.flash);
 
